@@ -8,7 +8,9 @@ from litestar.testing import AsyncTestClient
 
 from app.server.asgi import app as asgi_app
 from app.client import App
-from app.client.entity import Account
+from app.client.entity import Account, Applicant
+from app.domain.applicants.schema import ApplicantCreate
+from app.domain.applicants.enums import ApplicantStatus, ProfessionalInterest
 from app.domain.volunteers.services import AccountService
 from app.domain.volunteers.schema import AccountCreate
 from app.domain.volunteers.enums import AccountRole
@@ -63,3 +65,60 @@ async def account(
 
     app.use_account(admin_account.id)
     await account.delete()
+
+
+@pytest_asyncio.fixture(scope="function")
+async def moderator_account(
+    app: App,
+    admin_account: Account,
+):
+    app.use_account(admin_account.id)
+
+    account = await app.accounts.create(AccountCreate(
+        name="Test Moderator",
+        email=f"{uuid4()}@example.com",
+        is_active=True,
+        role=AccountRole.moderator,
+    ))
+
+    yield account
+
+    app.use_account(admin_account.id)
+    await account.delete()
+
+
+@pytest_asyncio.fixture(scope="function")
+async def member_account(
+    app: App,
+    admin_account: Account,
+):
+    app.use_account(admin_account.id)
+
+    account = await app.accounts.create(AccountCreate(
+        name="Test Member",
+        email=f"{uuid4()}@example.com",
+        is_active=True,
+        role=AccountRole.member,
+    ))
+
+    yield account
+
+    app.use_account(admin_account.id)
+    await account.delete()
+
+
+@pytest_asyncio.fixture(scope="function")
+async def applicant(
+    app: App,
+) -> AsyncIterator[Applicant]:
+    app.use_account(None)
+
+    applicant = await app.applicants.create(ApplicantCreate(
+        first_name="Test",
+        last_name="Applicant",
+        email=f"{uuid4()}@example.com",
+        interests=[ProfessionalInterest.hr, ProfessionalInterest.media],
+        privacy_accepted=True,
+    ))
+
+    yield applicant

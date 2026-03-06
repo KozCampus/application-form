@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 from app.client.primitives import Collection
-from app.client.entity import Account
+from app.client.entity import Account, Applicant
+from app.domain.applicants.schema import (
+    ApplicantCreate,
+    ApplicantUpdate,
+)
 from app.domain.volunteers.schema import (
     AccountCreate,
     AccountUpdate,
@@ -28,3 +32,10 @@ class AccountCollection(Collection[Account, AccountCreate, AccountUpdate]):
             type=self.entity_type,
             data=data,
         )
+
+
+class ApplicantCollection(Collection[Applicant, ApplicantCreate, ApplicantUpdate]):
+    path = "/applicants"
+    entity_type = Applicant
+    create_type = ApplicantCreate
+    update_type = ApplicantUpdate

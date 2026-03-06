@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from app.client.primitives import Client, Entity, Collection, AppBase
-from app.client.collection import AccountCollection
+from app.client.collection import AccountCollection, ApplicantCollection
 
 
 __all__ = [
@@ -15,3 +15,4 @@ __all__ = [
 
 class App(AppBase):
     accounts: AccountCollection
+    applicants: ApplicantCollection
