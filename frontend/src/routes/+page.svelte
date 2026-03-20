@@ -72,7 +72,7 @@
 				lastName: lastName.trim(),
 				email: email.trim(),
 				phone: phone.trim(),
-				interests: selectedInterests as typeof INTERESTS[number][],
+				interests: selectedInterests as (typeof INTERESTS)[number][],
 			});
 			submitted = true;
 			toast.success('Sikeres jelentkezés!');
@@ -105,8 +105,7 @@
 			</h2>
 
 			<p class="blurb">
-				Csatlakozz a közösséghez, amely nemcsak kapcsolatokat épít,
-				hanem jellemet és jövőt.
+				Csatlakozz a közösséghez, amely nemcsak kapcsolatokat épít, hanem jellemet és jövőt.
 			</p>
 
 			<!-- countdown -->
@@ -144,9 +143,7 @@
 					</p>
 				</div>
 			{:else}
-				<h3 class="form-heading">
-					Légy része a 40 fős szervezői csapatnak!
-				</h3>
+				<h3 class="form-heading">Légy része a szervezői csapatnak!</h3>
 
 				<form onsubmit={submit} class="form">
 					<div class="field">

@@ -27,7 +27,7 @@ export namespace API {
 	email: string;
 	id: string;
 	isActive: boolean;
-	name: string;
+	name?: null | string;
 	role: "admin" | "member" | "moderator";
 	updatedAt: string;
 };
@@ -44,7 +44,7 @@ export namespace API {
 	export type RequestBody = {
 	email: string;
 	isActive?: boolean;
-	name: string;
+	name?: null | string;
 	role?: "admin" | "member" | "moderator";
 };
 };
@@ -56,10 +56,10 @@ export namespace API {
 	email: string;
 	firstName: string;
 	id: string;
-	interests: ("Eseményszervezés" | "HR" | "IT/Digitális infrastruktúra" | "Jogi terület" | "Kommunikáció" | "Média" | "Partnerkapcsolatok")[];
+	interests: string;
 	lastName: string;
-	privacyAccepted: boolean;
-	status: "accepted" | "received";
+	phone: string;
+	status: "accepted" | "in_progress" | "received";
 	updatedAt: string;
 };
 };
@@ -75,9 +75,9 @@ export namespace API {
 	export type RequestBody = {
 	email: string;
 	firstName: string;
-	interests?: ("Eseményszervezés" | "HR" | "IT/Digitális infrastruktúra" | "Jogi terület" | "Kommunikáció" | "Média" | "Partnerkapcsolatok")[];
+	interests: ("Eseményszervezés" | "HR" | "IT/Digitális infrastruktúra" | "Jogi terület" | "Kommunikáció" | "Média" | "Partnerkapcsolatok")[];
 	lastName: string;
-	privacyAccepted?: boolean;
+	phone: string;
 };
 };
 
@@ -88,7 +88,7 @@ export namespace API {
 	email: string;
 	id: string;
 	isActive: boolean;
-	name: string;
+	name?: null | string;
 	role: "admin" | "member" | "moderator";
 	updatedAt: string;
 };
@@ -105,7 +105,7 @@ export namespace API {
 	export type RequestBody = {
 	email: string;
 	isActive?: boolean;
-	name: string;
+	name?: null | string;
 	role?: "admin" | "member" | "moderator";
 };
 };
@@ -135,7 +135,7 @@ export namespace API {
 	email: string;
 	id: string;
 	isActive: boolean;
-	name: string;
+	name?: null | string;
 	role: "admin" | "member" | "moderator";
 	updatedAt: string;
 };
@@ -161,10 +161,10 @@ export namespace API {
 	email: string;
 	firstName: string;
 	id: string;
-	interests: ("Eseményszervezés" | "HR" | "IT/Digitális infrastruktúra" | "Jogi terület" | "Kommunikáció" | "Média" | "Partnerkapcsolatok")[];
+	interests: string;
 	lastName: string;
-	privacyAccepted: boolean;
-	status: "accepted" | "received";
+	phone: string;
+	status: "accepted" | "in_progress" | "received";
 	updatedAt: string;
 };
 };
@@ -189,7 +189,7 @@ export namespace API {
 	email: string;
 	id: string;
 	isActive: boolean;
-	name: string;
+	name?: null | string;
 	role: "admin" | "member" | "moderator";
 	updatedAt: string;
 };
@@ -222,18 +222,18 @@ export namespace API {
 	export namespace ListAccounts {
 	export namespace Http200 {
 	export type ResponseBody = {
-	items: {
+	items?: {
 	createdAt: string;
 	email: string;
 	id: string;
 	isActive: boolean;
-	name: string;
+	name?: null | string;
 	role: "admin" | "member" | "moderator";
 	updatedAt: string;
 }[];
-	limit: number;
-	offset: number;
-	total: number;
+	limit?: number;
+	offset?: number;
+	total?: number;
 };
 };
 
@@ -264,20 +264,20 @@ export namespace API {
 	export namespace ListApplicants {
 	export namespace Http200 {
 	export type ResponseBody = {
-	items: {
+	items?: {
 	createdAt: string;
 	email: string;
 	firstName: string;
 	id: string;
-	interests: ("Eseményszervezés" | "HR" | "IT/Digitális infrastruktúra" | "Jogi terület" | "Kommunikáció" | "Média" | "Partnerkapcsolatok")[];
+	interests: string;
 	lastName: string;
-	privacyAccepted: boolean;
-	status: "accepted" | "received";
+	phone: string;
+	status: "accepted" | "in_progress" | "received";
 	updatedAt: string;
 }[];
-	limit: number;
-	offset: number;
-	total: number;
+	limit?: number;
+	offset?: number;
+	total?: number;
 };
 };
 
@@ -328,7 +328,7 @@ export namespace API {
 	email: string;
 	id: string;
 	isActive: boolean;
-	name: string;
+	name?: null | string;
 	role: "admin" | "member" | "moderator";
 	updatedAt: string;
 };
@@ -361,10 +361,10 @@ export namespace API {
 	email: string;
 	firstName: string;
 	id: string;
-	interests: ("Eseményszervezés" | "HR" | "IT/Digitális infrastruktúra" | "Jogi terület" | "Kommunikáció" | "Média" | "Partnerkapcsolatok")[];
+	interests: string;
 	lastName: string;
-	privacyAccepted: boolean;
-	status: "accepted" | "received";
+	phone: string;
+	status: "accepted" | "in_progress" | "received";
 	updatedAt: string;
 };
 };
@@ -382,7 +382,7 @@ export namespace API {
 };
 
 	export type RequestBody = {
-	status: "accepted" | "received";
+	status: "accepted" | "in_progress" | "received";
 };
 };
 };
