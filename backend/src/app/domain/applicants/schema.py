@@ -11,6 +11,7 @@ class ApplicantSchema(UUIDAudit):
     first_name: str
     last_name: str
     email: str
+    phone: str
     interests: str
     status: ApplicantStatus
 
@@ -19,6 +20,7 @@ class ApplicantCreate(Struct):
     first_name: str
     last_name: str
     email: str
+    phone: str
     interests: list[ProfessionalInterest]
 
 

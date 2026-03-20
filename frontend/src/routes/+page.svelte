@@ -34,6 +34,7 @@
 	let firstName = $state('');
 	let lastName = $state('');
 	let email = $state('');
+	let phone = $state('');
 	let submitting = $state(false);
 	let submitted = $state(false);
 
@@ -70,6 +71,7 @@
 				firstName: firstName.trim(),
 				lastName: lastName.trim(),
 				email: email.trim(),
+				phone: phone.trim(),
 				interests: selectedInterests as typeof INTERESTS[number][],
 			});
 			submitted = true;
@@ -176,6 +178,17 @@
 							type="email"
 							placeholder="pelda@email.hu"
 							bind:value={email}
+							class="h-11"
+						/>
+					</div>
+
+					<div class="field">
+						<label for="ph">Telefonszám</label>
+						<Input
+							id="ph"
+							type="tel"
+							placeholder="+36 30 123 4567"
+							bind:value={phone}
 							class="h-11"
 						/>
 					</div>

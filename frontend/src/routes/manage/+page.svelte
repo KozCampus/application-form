@@ -113,6 +113,7 @@
 					<Table.Row>
 						<Table.Head>Név</Table.Head>
 						<Table.Head>E-mail</Table.Head>
+						<Table.Head>Telefon</Table.Head>
 						<Table.Head>Érdeklődés</Table.Head>
 						<Table.Head>Jelentkezett</Table.Head>
 						<Table.Head class="w-[160px]">Státusz</Table.Head>
@@ -128,6 +129,9 @@
 								<a href="mailto:{applicant.email}" class="text-sm hover:underline">
 									{applicant.email}
 								</a>
+							</Table.Cell>
+							<Table.Cell class="text-sm">
+								{applicant.phone || '-'}
 							</Table.Cell>
 							<Table.Cell>
 								{@const interests = parseInterests(applicant.interests)}

@@ -9,6 +9,7 @@
 	import LogoWithText from '$lib/components/custom/logo-with-text.svelte';
 	import LoaderIcon from '@lucide/svelte/icons/loader';
 	import LogOut from '@lucide/svelte/icons/log-out';
+	import ModeToggle from '$lib/components/mode-toggle.svelte';
 
 	let { children } = $props();
 
@@ -57,6 +58,7 @@
 				</a>
 				<div class="flex items-center gap-3">
 					<span class="text-muted-foreground text-sm">{clientAccount.state.name}</span>
+					<ModeToggle />
 					<Button variant="ghost" size="icon" onclick={handleLogout}>
 						<LogOut class="size-4" />
 					</Button>

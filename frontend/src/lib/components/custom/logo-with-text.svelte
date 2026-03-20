@@ -11,5 +11,6 @@
 		className
 	)}
 >
-	<img src="/logo-white.svg" alt="KözCampus" class="h-6 w-auto" />
+	<img src="/logo.svg" alt="KözCampus" class="h-6 w-auto dark:hidden" />
+	<img src="/logo-white.svg" alt="KözCampus" class="h-6 w-auto hidden dark:block" />
 </div>

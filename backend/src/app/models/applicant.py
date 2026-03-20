@@ -10,5 +10,6 @@ class Applicant(UUIDAuditBase):
     first_name: Mapped[str] = mapped_column()
     last_name: Mapped[str] = mapped_column()
     email: Mapped[str] = mapped_column()
+    phone: Mapped[str] = mapped_column()
     interests: Mapped[list] = mapped_column(JSONB)
     status: Mapped[ApplicantStatus] = mapped_column(default=ApplicantStatus.received)
