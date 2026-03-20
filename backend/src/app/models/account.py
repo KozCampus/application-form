@@ -12,7 +12,7 @@ if t.TYPE_CHECKING:
 class Account(UUIDAuditBase):
     __tablename__ = "account"
 
-    name: Mapped[str] = mapped_column()
+    name: Mapped[str | None] = mapped_column()
     email: Mapped[str] = mapped_column(unique=True)
     is_active: Mapped[bool] = mapped_column(default=False)
     role: Mapped[AccountRole] = mapped_column(default=AccountRole.member)

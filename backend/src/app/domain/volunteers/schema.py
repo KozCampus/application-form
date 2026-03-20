@@ -5,14 +5,14 @@ from app.domain.volunteers.enums import AccountRole
 
 
 class AccountSchema(UUIDAudit):
-    name: str
+    name: str | None
     email: str
     is_active: bool
     role: AccountRole
 
 
 class AccountCreate(Struct):
-    name: str
+    name: str | None
     email: str
     is_active: bool = False
     role: AccountRole = AccountRole.member

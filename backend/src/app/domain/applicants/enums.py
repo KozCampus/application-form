@@ -5,6 +5,7 @@ from enum import StrEnum
 
 class ApplicantStatus(StrEnum):
     received = "received"
+    in_progress = "in_progress"
     accepted = "accepted"
 
 

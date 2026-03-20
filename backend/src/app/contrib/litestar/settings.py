@@ -195,6 +195,15 @@ class SAQSettings(msgspec.Struct):
     """
 
 
+class EmailSettings(Struct):
+    smtp_server: str = os.environ.get("APP_SMTP_SERVER", "")
+    smtp_port: int = int(os.environ.get("APP_SMTP_PORT", "587"))
+    smtp_username: str = os.environ.get("APP_SMTP_USERNAME", "")
+    smtp_password: str = os.environ.get("APP_SMTP_PASSWORD", "")
+    sender_email: str = os.environ.get("APP_SENDER_EMAIL", "")
+    organizer_email: str = os.environ.get("APP_ORGANIZER_EMAIL", "")
+
+
 class AppSettings(Struct):
     api: APISettings = msgspec.field(default_factory=APISettings)
     """
@@ -216,6 +225,11 @@ class AppSettings(Struct):
     saq: SAQSettings = msgspec.field(default_factory=SAQSettings)
     """
     SAQ settings.
+    """
+
+    email: EmailSettings = msgspec.field(default_factory=EmailSettings)
+    """
+    Email / SMTP settings.
     """
 
     sqlalchemy: SQLAlchemySettings = msgspec.field(

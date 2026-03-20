@@ -2,7 +2,7 @@
 	import { PUBLIC_API_URL } from '$env/static/public';
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
-	import { FieldGroup, Field, FieldDescription } from '$lib/components/ui/field/index.js';
+	import { FieldGroup, Field } from '$lib/components/ui/field/index.js';
 	import { cn } from '$lib/utils.js';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import BrandGoogle from '@tabler/icons-svelte/icons/brand-google';
@@ -22,8 +22,8 @@
 <div class={cn('flex flex-col gap-6', className)} {...restProps}>
 	<Card.Root>
 		<Card.Header class="text-center">
-			<Card.Title class="text-xl">Welcome!</Card.Title>
-			<Card.Description>Sign in with your Google account.</Card.Description>
+			<Card.Title class="text-xl">Üdvözlünk!</Card.Title>
+			<Card.Description>Jelentkezz be a Google fiókoddal.</Card.Description>
 		</Card.Header>
 		<Card.Content>
 			<form>
@@ -40,15 +40,11 @@
 							{:else}
 								<BrandGoogle class="size-5 fill-current stroke-none" />
 							{/if}
-							Continue with Google
+							Bejelentkezés Google-lel
 						</Button>
 					</Field>
 				</FieldGroup>
 			</form>
 		</Card.Content>
 	</Card.Root>
-	<FieldDescription class="px-6 text-center">
-		By continuing, you agree to our <a href="##">Terms of Service</a>
-		and <a href="##">Privacy Policy</a>.
-	</FieldDescription>
 </div>

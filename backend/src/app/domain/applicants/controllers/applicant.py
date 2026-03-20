@@ -4,6 +4,10 @@ import typing as t
 from uuid import UUID
 
 from app.contrib.litestar import *  # type: ignore
+from app.domain.applicants.emails import (
+    send_welcome_email,
+    send_organizer_notification,
+)
 from app.domain.applicants.schema import (
     ApplicantSchema,
     ApplicantCreate,
@@ -26,12 +30,23 @@ class ApplicantController(Controller):
         self,
         data: ApplicantCreate,
         applicant_service: ApplicantService,
-    ) -> ApplicantSchema:
+    ) -> Response[ApplicantSchema]:
         applicant = await applicant_service.create(data)
-        return applicant_service.to_schema(
+
+        obj = applicant_service.to_schema(
             data=applicant,
             schema_type=ApplicantSchema,
         )
+
+        tasks = BackgroundTasks(
+            tasks=[
+                BackgroundTask(send_welcome_email, applicant),
+                BackgroundTask(send_organizer_notification, applicant),
+            ],
+            run_in_task_group=True,
+        )
+
+        return Response(obj, background=tasks)
 
 
     @get(

@@ -11,8 +11,7 @@ class ApplicantSchema(UUIDAudit):
     first_name: str
     last_name: str
     email: str
-    interests: list[ProfessionalInterest]
-    privacy_accepted: bool
+    interests: str
     status: ApplicantStatus
 
 
@@ -20,8 +19,7 @@ class ApplicantCreate(Struct):
     first_name: str
     last_name: str
     email: str
-    interests: list[ProfessionalInterest] = field(default_factory=list)
-    privacy_accepted: bool = False
+    interests: list[ProfessionalInterest]
 
 
 class ApplicantUpdate(Struct):

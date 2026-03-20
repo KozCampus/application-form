@@ -27,6 +27,8 @@ from app.domain.volunteers.services import (
     AccountService,
     OAuth2CredentialsService,
 )
+from app.domain.volunteers.schema import AccountSchema, AccountCreate
+from app.domain.volunteers.enums import AccountRole
 
 
 auth_minute_rate_limit = RateLimitConfig(("minute", 60))
@@ -145,6 +147,7 @@ class AuthController(Controller):
             raise ForbiddenError()
 
         user_info = r.json()
+        print(user_info)
 
         account = await account_service.get_one_or_none(
             email=user_info["email"],
@@ -165,16 +168,32 @@ class AuthController(Controller):
             print(account.google_credentials_id)
             claims = create_claims(account.id)
             token = issue_token(claims)
-            response = Redirect(path=f"{settings.api.redirect_url}")
+            response = Redirect(path=settings.api.redirect_url)
             set_auth_cookie(response, token)
             return response
 
         token = issue_registration_token(user_info["email"], credentials.id)
-        response = Redirect(
-            path=f"{settings.api.redirect_url}/signup?email={user_info['email']}"
+        response = Redirect(path=settings.api.redirect_url)
+
+        data = AccountCreate(
+            name=None,
+            email=user_info["email"],
+            is_active=False,
+            role=AccountRole.member,
+        )
+        account = await account_service.create(data, auto_commit=True)
+        account.google_credentials_id = credentials.id
+
+        claims = create_claims(account.id)
+        token = issue_token(claims)
+
+        obj = account_service.to_schema(
+            data=account,
+            schema_type=AccountSchema,
         )
 
-        set_auth_cookie(response, token, key="Reg")
+        set_auth_cookie(response, token)
+        
         return response
     
 

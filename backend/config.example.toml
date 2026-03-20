@@ -17,6 +17,25 @@
 # Base URL of the application without a trailing slash. (default: "http://localhost:8000")
 #base_url = "http://localhost:8000"
 
+[email]
+# SMTP server hostname. (default: "")
+#smtp_server = "smtp.azurecomm.net"
+
+# SMTP server port. (default: 587)
+#smtp_port = 587
+
+# SMTP username for authentication. (default: "")
+#smtp_username = ""
+
+# SMTP password for authentication. (default: "")
+#smtp_password = ""
+
+# Sender email address shown in the From field. (default: "")
+#sender_email = ""
+
+# Email address where organizer notifications are sent. (default: "")
+#organizer_email = ""
+
 [sqlalchemy]
 # The path to the `alembic.ini` configuration file. (default: "db/sqlalchemy/migrations/alembic.ini")
 #migration_config = "db/sqlalchemy/migrations/alembic.ini"

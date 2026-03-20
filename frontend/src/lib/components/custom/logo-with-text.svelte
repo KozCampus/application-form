@@ -7,9 +7,9 @@
 
 <div
 	class={cn(
-		'flex items-center gap-2 self-center font-medium select-none pointer-events-none',
+		'flex items-center gap-2 self-center select-none pointer-events-none',
 		className
 	)}
 >
-	közcampus
+	<img src="/logo-white.svg" alt="KözCampus" class="h-6 w-auto" />
 </div>
