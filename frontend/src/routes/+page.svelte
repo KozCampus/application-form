@@ -6,7 +6,7 @@
 	import { toast } from 'svelte-sonner';
 	import CircleCheckBig from '@lucide/svelte/icons/circle-check-big';
 
-	const TARGET = new Date('2026-08-07T00:00:00').getTime();
+	const TARGET = new Date('2026-08-13T00:00:00').getTime();
 
 	let days = $state(0);
 	let hours = $state(0);
@@ -109,7 +109,7 @@
 			</p>
 
 			<!-- countdown -->
-			<div class="countdown" aria-label="Visszaszámlálás 2026. augusztus 7-ig">
+			<div class="countdown" aria-label="Visszaszámlálás 2026. augusztus 13-ig">
 				<div class="cd-box cd-green">
 					<span class="cd-num">{days}</span>
 					<span class="cd-lbl">nap</span>
@@ -249,8 +249,7 @@
 	.hero-fog {
 		position: absolute;
 		inset: 0;
-		background:
-			radial-gradient(circle at 30% 35%, rgba(120, 160, 80, 0.18) 0%, transparent 55%),
+		background: radial-gradient(circle at 30% 35%, rgba(120, 160, 80, 0.18) 0%, transparent 55%),
 			radial-gradient(circle at 70% 60%, rgba(60, 100, 60, 0.15) 0%, transparent 50%);
 		pointer-events: none;
 	}
